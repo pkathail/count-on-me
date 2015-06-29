@@ -101,10 +101,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IDZ-bp-f6G">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IDZ-bp-f6G">
                                 <rect key="frame" x="56" y="407" width="488" height="31"/>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Metronome Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehO-f6-211">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metronome Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehO-f6-211">
                                 <rect key="frame" x="234" y="365" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -134,6 +134,7 @@
                             <constraint firstAttribute="centerX" secondItem="Hnr-f5-sQm" secondAttribute="centerX" id="m9S-5U-1q9"/>
                             <constraint firstItem="IDZ-bp-f6G" firstAttribute="top" secondItem="ehO-f6-211" secondAttribute="bottom" constant="21" id="pmJ-hO-nT8"/>
                             <constraint firstItem="Hnr-f5-sQm" firstAttribute="width" secondItem="jRS-jh-Enl" secondAttribute="width" id="t44-LD-Rdr"/>
+                            <constraint firstItem="ehO-f6-211" firstAttribute="top" secondItem="Hnr-f5-sQm" secondAttribute="bottom" constant="87" id="wYo-RJ-2ME"/>
                             <constraint firstAttribute="centerX" secondItem="ehO-f6-211" secondAttribute="centerX" id="ycq-At-9vo"/>
                         </constraints>
                     </view>
@@ -197,7 +198,8 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Play!" id="LR3-mc-muL">
                                             <connections>
-                                                <segue destination="6kJ-7c-ghS" kind="show" id="KMx-qw-SMi"/>
+                                                <action selector="playButtonPressed:" destination="5AN-Ja-4LH" id="o4W-56-fxR"/>
+                                                <segue destination="6kJ-7c-ghS" kind="show" id="GB3-Bz-Jgo"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -359,7 +361,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZSV-uN-qoO"/>
-        <segue reference="eDq-ZY-NrM"/>
+        <segue reference="dyF-GW-FFp"/>
+        <segue reference="GB3-Bz-Jgo"/>
     </inferredMetricsTieBreakers>
 </document>

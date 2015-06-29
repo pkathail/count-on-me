@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GameViewController : UIViewController
-
+@property (nonatomic) IBOutlet UILabel *currentLetter;
+@property (nonatomic) int currentLetterIndex;
+@property (nonatomic) NSArray *patternArray;
+//- (instancetype) initWithArray:(NSArray *)pattern sender:(id)sender;
 @end
