@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddViewController : UIViewController
 
+@interface AddViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@property (strong, nonatomic) NSArray *zeroThroughNine;
+@property (strong, nonatomic) NSString *titleForRow;
+@property (weak, nonatomic) IBOutlet UIPickerView *addSubtractPickerView;
 @end

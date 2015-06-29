@@ -13,10 +13,28 @@
 @end
 
 @implementation AddViewController
+//--------------------------------------Methods for UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    return self.zeroThroughNine[row];
+}
+
+//-------------------------------------Methods for UIPickerViewDataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 3;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return 9;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.addSubtractPickerView.delegate = self;
+    self.addSubtractPickerView.dataSource = self;
+    self.zeroThroughNine = [[NSMutableArray alloc] initWithObjects: @"0",@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
+    self.titleForRow = [[NSString alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
