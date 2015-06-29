@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MultiplyViewController : UIViewController
+@interface MultiplyViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource>
+@property (nonatomic) NSMutableString *pattern;
 
 @end
