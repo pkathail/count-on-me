@@ -16,12 +16,8 @@
 //--------------------------------------Methods for UIPickerViewDelegate
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    for (int component = 0; component < 3; component++) {
-        for (int row = 0; row < self.zeroThroughNine.count; row++) {
-            self.titleForRow = [self.zeroThroughNine objectAtIndex:row];
-        }
-    }
-    return self.titleForRow;
+    
+    return self.zeroThroughNine[row];
 }
 
 //-------------------------------------Methods for UIPickerViewDataSource
@@ -35,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.addSubtractPickerView.delegate = self;
+    self.addSubtractPickerView.dataSource = self;
     self.zeroThroughNine = [[NSMutableArray alloc] initWithObjects: @"0",@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
     self.titleForRow = [[NSString alloc] init];
 }
