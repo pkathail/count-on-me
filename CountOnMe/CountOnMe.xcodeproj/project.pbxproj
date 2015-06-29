@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED17AC101B41E73B00115C86 /* GameModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17AC0F1B41E73B00115C86 /* GameModeViewController.m */; };
+		ED17AC131B41E75200115C86 /* PatternViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17AC121B41E75200115C86 /* PatternViewController.m */; };
+		ED17AC161B41E75C00115C86 /* MultiplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17AC151B41E75C00115C86 /* MultiplyViewController.m */; };
+		ED17AC191B41E76200115C86 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17AC181B41E76200115C86 /* AddViewController.m */; };
+		ED17AC1C1B41E78100115C86 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED17AC1B1B41E78100115C86 /* GameViewController.m */; };
 		ED8258F01B41C43B006BB50E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8258EF1B41C43B006BB50E /* main.m */; };
 		ED8258F31B41C43B006BB50E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8258F21B41C43B006BB50E /* AppDelegate.m */; };
 		ED8258F61B41C43B006BB50E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8258F51B41C43B006BB50E /* ViewController.m */; };
@@ -27,6 +32,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED17AC0E1B41E73B00115C86 /* GameModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModeViewController.h; sourceTree = "<group>"; };
+		ED17AC0F1B41E73B00115C86 /* GameModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModeViewController.m; sourceTree = "<group>"; };
+		ED17AC111B41E75200115C86 /* PatternViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternViewController.h; sourceTree = "<group>"; };
+		ED17AC121B41E75200115C86 /* PatternViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatternViewController.m; sourceTree = "<group>"; };
+		ED17AC141B41E75C00115C86 /* MultiplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplyViewController.h; sourceTree = "<group>"; };
+		ED17AC151B41E75C00115C86 /* MultiplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyViewController.m; sourceTree = "<group>"; };
+		ED17AC171B41E76200115C86 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		ED17AC181B41E76200115C86 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		ED17AC1A1B41E78100115C86 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		ED17AC1B1B41E78100115C86 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		ED8258EA1B41C43B006BB50E /* CountOnMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountOnMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8258EE1B41C43B006BB50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8258EF1B41C43B006BB50E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +101,16 @@
 				ED8258F41B41C43B006BB50E /* ViewController.h */,
 				ED8258F51B41C43B006BB50E /* ViewController.m */,
 				ED8258F71B41C43B006BB50E /* Main.storyboard */,
+				ED17AC1A1B41E78100115C86 /* GameViewController.h */,
+				ED17AC1B1B41E78100115C86 /* GameViewController.m */,
+				ED17AC111B41E75200115C86 /* PatternViewController.h */,
+				ED17AC121B41E75200115C86 /* PatternViewController.m */,
+				ED17AC141B41E75C00115C86 /* MultiplyViewController.h */,
+				ED17AC151B41E75C00115C86 /* MultiplyViewController.m */,
+				ED17AC171B41E76200115C86 /* AddViewController.h */,
+				ED17AC181B41E76200115C86 /* AddViewController.m */,
+				ED17AC0E1B41E73B00115C86 /* GameModeViewController.h */,
+				ED17AC0F1B41E73B00115C86 /* GameModeViewController.m */,
 				ED8258FA1B41C43B006BB50E /* Images.xcassets */,
 				ED8258FC1B41C43B006BB50E /* LaunchScreen.xib */,
 				ED8258ED1B41C43B006BB50E /* Supporting Files */,
@@ -219,9 +244,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED17AC1C1B41E78100115C86 /* GameViewController.m in Sources */,
 				ED8258F61B41C43B006BB50E /* ViewController.m in Sources */,
+				ED17AC101B41E73B00115C86 /* GameModeViewController.m in Sources */,
+				ED17AC161B41E75C00115C86 /* MultiplyViewController.m in Sources */,
+				ED17AC191B41E76200115C86 /* AddViewController.m in Sources */,
 				ED8258F31B41C43B006BB50E /* AppDelegate.m in Sources */,
 				ED8258F01B41C43B006BB50E /* main.m in Sources */,
+				ED17AC131B41E75200115C86 /* PatternViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +448,7 @@
 				ED82590F1B41C43B006BB50E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED8259101B41C43B006BB50E /* Build configuration list for PBXNativeTarget "CountOnMeTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +457,7 @@
 				ED8259121B41C43B006BB50E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
