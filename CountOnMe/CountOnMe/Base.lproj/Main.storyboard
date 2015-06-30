@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEF-uv-HAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-472"/>
+            <point key="canvasLocation" x="1394" y="-458"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="NS1-9D-uAd">
@@ -256,7 +256,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Play!" id="7Oy-fd-DDS">
                                             <connections>
-                                                <segue destination="6kJ-7c-ghS" kind="show" id="VN5-2F-e4U"/>
+                                                <segue destination="6kJ-7c-ghS" kind="show" identifier="PlayAdd" id="VN5-2F-e4U"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -326,10 +326,14 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="IoW-hf-dxc">
-                                        <barButtonItem key="leftBarButtonItem" title="Reset" id="f5c-hd-hZw"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Reset" id="f5c-hd-hZw">
+                                            <connections>
+                                                <action selector="resetButtonPressed:" destination="6kJ-7c-ghS" id="rqr-Sd-YOj"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Nr0-dr-nCe">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="c0T-wc-EYp"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="goHome" id="c0T-wc-EYp"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -357,11 +361,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vc7-bE-7KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2203" y="-185"/>
+            <point key="canvasLocation" x="2201" y="-180"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dyF-GW-FFp"/>
-        <segue reference="GB3-Bz-Jgo"/>
+        <segue reference="c0T-wc-EYp"/>
+        <segue reference="VN5-2F-e4U"/>
     </inferredMetricsTieBreakers>
 </document>

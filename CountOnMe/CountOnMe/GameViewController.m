@@ -13,6 +13,7 @@
 
 @interface GameViewController ()
 @property (nonatomic, strong) NSTimer *timer;
+@property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
 @end
 
 @implementation GameViewController
@@ -41,9 +42,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.patternArray = @[@"A", @"B", @"C"];
+    self.patternArray = @[@"a", @"b", @"c"];
     self.currentLetterIndex = 0;
     self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+    [self.synthesizer speakUtterance:utterance];
     [self loopThroughPattern];
 }
 
@@ -59,24 +63,39 @@
 {
     [self.timer invalidate];
     self.timer = nil;
-    [self.currentLetter removeFromSuperview];
+    
 }
 
 - (void)timerFired:(NSTimer *)timer
 {
     self.currentLetterIndex = (self.currentLetterIndex +1)%self.patternArray.count;
     self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+    [self.synthesizer speakUtterance:utterance];
     [self.currentLetter setNeedsDisplay];
 }
 
-/*
+
+- (IBAction)resetButtonPressed:(id)sender
+{
+    self.currentLetterIndex = 0;
+    self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+    [self.timer invalidate];
+    self.timer = nil;
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+    [self.synthesizer speakUtterance:utterance];
+    [self loopThroughPattern];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"goHome"]) {
+        [self removeFromSuperview];
+    }
 }
-*/
+
 
 @end
