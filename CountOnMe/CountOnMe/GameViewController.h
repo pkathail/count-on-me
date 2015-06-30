@@ -15,5 +15,6 @@
 @property (nonatomic) int currentLetterIndex;
 @property (nonatomic) NSArray *patternArray;
 @property (nonatomic) int currentNumber;
+@property (nonatomic) int startNumber;
 //- (instancetype) initWithArray:(NSArray *)pattern sender:(id)sender;
 @end
