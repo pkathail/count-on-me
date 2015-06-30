@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GameModeViewController;
 
-@interface PatternViewController : UIViewController
+@interface PatternViewController : UIViewController<UITextFieldDelegate>
+
+@property (strong,nonatomic) IBOutlet UITextField *patternTextField;
+@property (strong, nonatomic) NSString *patternTextFieldString;
+@property (strong, nonatomic) UISlider  *metronomeSlider;
+@property (strong, nonatomic) UIAlertController *uiAlert;
+
+
 
 @end

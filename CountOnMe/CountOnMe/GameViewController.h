@@ -11,7 +11,10 @@
 
 @interface GameViewController : UIViewController
 @property (nonatomic) IBOutlet UILabel *currentLetter;
+@property (nonatomic) IBOutlet UILabel *currentOperation;
 @property (nonatomic) int currentLetterIndex;
 @property (nonatomic) NSArray *patternArray;
+@property (nonatomic) int currentNumber;
+@property (nonatomic) int startNumber;
 //- (instancetype) initWithArray:(NSArray *)pattern sender:(id)sender;
 @end

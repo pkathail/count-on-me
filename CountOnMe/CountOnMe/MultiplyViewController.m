@@ -7,7 +7,7 @@
 //
 
 #import "MultiplyViewController.h"
-
+#import "GameViewController.h"
 
 @interface MultiplyViewController ()
 @property (nonatomic) NSArray *numbers;
@@ -21,12 +21,12 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 6;
+    return 5;
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if(component % 2 != 0)
+    if(component % 2 == 0)
     {
         return self.numbers.count;
     }
@@ -78,7 +78,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if(component % 2 != 0)
+    if(component % 2 == 0)
     {
         return self.numbers[row];
     }
@@ -95,25 +95,35 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    for(int i = 0; i < 6; i ++)
+    if([segue.identifier isEqualToString:@"playMultiply"])
     {
-        if(i % 2 != 0)
+        for(int i = 0; i < 5; i ++)
         {
-            [self.pattern appendString:[self.numbers objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+            if(i % 2 == 0)
+            {
+                [self.pattern appendString:[self.numbers objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+            }
+            else
+            {
+                [self.pattern appendString:[self.mulDiv objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+            }
         }
-        else
+        NSString *pat = self.pattern;
+        NSMutableArray *a = [[NSMutableArray alloc] init];
+        for(int i = 0; i < pat.length; i++)
         {
-            [self.pattern appendString:[self.mulDiv objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+            NSString *s = [NSString stringWithFormat:@"%c",[self.pattern characterAtIndex:i]];
+            [a addObject:s];
+        }
+        self.gvc.patternArray = a;
+        UIViewController *destVC = segue.destinationViewController;
+        if([destVC isKindOfClass:[GameViewController class]]) {
+            GameViewController *gamevc = (GameViewController *)destVC;
+            gamevc.patternArray = a;
+            
         }
     }
-    NSString *pat = self.pattern;
-    NSMutableArray *a = [[NSMutableArray alloc] init];
-    for(int i = 0; i < pat.length; i++)
-    {
-        NSString *s = [NSString stringWithFormat:@"%c",[self.pattern characterAtIndex:i]];
-        [a addObject:s];
-    }
-    self.gvc.patternArray = a;
+    
 }
 
 
