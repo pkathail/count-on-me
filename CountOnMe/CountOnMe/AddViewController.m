@@ -62,15 +62,23 @@
         for (int count = 0; count < 5; count++) {
             [self.addSubtractPickerView selectedRowInComponent:count];
             NSInteger index = [self.addSubtractPickerView selectedRowInComponent:count];
+            
             if (count % 2 == 0) {
-                self.pattern = [NSString stringWithFormat:@",%@" ,[self.zeroThroughNine objectAtIndex:index]];
+                NSString *appendedString = [[NSString alloc]initWithFormat: @",%@" ,[self.zeroThroughNine objectAtIndex:index]];
+                self.pattern = [self.pattern stringByAppendingString:appendedString];
             } else {
-                self.pattern = [NSString stringWithFormat:@",%@" ,[self.operators objectAtIndex:index]];
+                NSString *appendedString = [[NSString alloc]initWithFormat: @",%@" ,[self.operators objectAtIndex:index]];
+                self.pattern = [self.pattern stringByAppendingString:appendedString];
             }
         }
     
     } self.splitItSequence = [self.pattern componentsSeparatedByString:@","];
     self.gvc.patternArray = self.splitItSequence;
+    for (int i = 0; i < self.splitItSequence.count; i++) {
+    
+        NSLog(@"Individual elements in the pattern:  %@", [self.splitItSequence objectAtIndex:i]);
+    }
+    
 }
 //*/
 
