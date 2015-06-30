@@ -69,12 +69,27 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    NSMutableArray *a = [[NSMutableArray alloc]init];
+    
+    for(int i = 0; i < [self.patternTextFieldString length]; i++)
+    {
+        NSString *s = [NSString stringWithFormat:@"%c",[self.patternTextFieldString characterAtIndex:i]];
+        [a addObject:s];
+    }
+    
+    UIViewController *destVC = segue.destinationViewController;
+    if([destVC isKindOfClass:[GameViewController class]]) {
+        GameViewController *gamevc = (GameViewController *)destVC;
+        gamevc.patternArray = a;
+        NSLog(@"String: %@", self.patternTextFieldString);
+    }
+    
     
 
 }
 
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([identifier isEqualToString:@"playPattern"]&& [self.patternTextField.text length] > 6) {
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *) identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"playPattern"] && [self.patternTextField.text length] > 6) {
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
         
         [self.uiAlert addAction:defaultAction];
@@ -85,8 +100,8 @@
     }
     else{
         self.patternTextFieldString = self.patternTextField.text;
-        return YES;
         
+        return YES;
     }
 }
 
