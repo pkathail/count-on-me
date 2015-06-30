@@ -63,4 +63,32 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     return YES;
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+
+}
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"playPattern"]&& [self.patternTextField.text length] > 6) {
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        [self.uiAlert addAction:defaultAction];
+        [self presentViewController:self.uiAlert animated:YES completion:nil];
+        
+        return NO;
+        
+    }
+    else{
+        self.patternTextFieldString = self.patternTextField.text;
+        return YES;
+        
+    }
+}
+
+
 @end
