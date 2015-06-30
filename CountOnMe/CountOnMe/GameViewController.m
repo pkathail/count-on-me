@@ -14,6 +14,7 @@
 @interface GameViewController ()
 @property (nonatomic, strong) NSTimer *timer;
 @property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
+@property (weak, nonatomic) IBOutlet UISwitch *soundSwitch;
 @end
 
 @implementation GameViewController
@@ -43,6 +44,7 @@
 {
     [super viewWillAppear:animated];
     self.currentOperation.text = @"";
+    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
     if([self.presentingViewController isKindOfClass:[AddViewController class]]) {
         self.currentLetterIndex = 1;
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
@@ -62,7 +64,6 @@
     } else if([self.presentingViewController isKindOfClass:[PatternViewController class]]) {
         self.currentLetterIndex = 0;
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
-        self.synthesizer = [[AVSpeechSynthesizer alloc] init];
         AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
         [self.synthesizer speakUtterance:utterance];
     }
@@ -120,15 +121,25 @@
 
 - (IBAction)resetButtonPressed:(id)sender
 {
-    self.currentLetterIndex = 0;
-    self.currentNumber = self.startNumber;
-    self.currentOperation.text = @"";
-    self.currentLetter.text = [[NSNumber numberWithInt:self.currentNumber] stringValue];
-    [self.timer invalidate];
-    self.timer = nil;
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
-    [self.synthesizer speakUtterance:utterance];
+    if([self.presentingViewController isKindOfClass:[PatternViewController class]]) {
+        self.currentLetterIndex = 0;
+        self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+        [self.timer invalidate];
+        self.timer = nil;
+        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+        [self.synthesizer speakUtterance:utterance];
+    } else {
+        self.currentLetterIndex = 0;
+        self.currentNumber = self.startNumber;
+        self.currentOperation.text = @"";
+        self.currentLetter.text = [[NSNumber numberWithInt:self.currentNumber] stringValue];
+        [self.timer invalidate];
+        self.timer = nil;
+//        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+//        [self.synthesizer speakUtterance:utterance];
+    }
     [self loopThroughPattern];
+    
 }
 
 
