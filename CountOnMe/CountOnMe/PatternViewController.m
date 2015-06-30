@@ -89,6 +89,10 @@
 }
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *) identifier sender:(id)sender{
+    if([self.patternTextField.text isEqualToString:@""]){
+        return NO;
+    }
+    
     if ([identifier isEqualToString:@"playPattern"] && [self.patternTextField.text length] > 6) {
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
         
