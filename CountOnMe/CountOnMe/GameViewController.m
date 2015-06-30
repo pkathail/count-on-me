@@ -42,15 +42,33 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //self.patternArray = @[@"a", @"b", @"c"];
-    self.currentLetterIndex = 0;
-    self.currentLetter.text = self.patternArray[self.currentLetterIndex];
-    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
-    [self.synthesizer speakUtterance:utterance];
-    [self loopThroughPattern];
+    self.currentLetterIndex = 1;
+    self.currentOperation.text = @"";
+    if([self.presentingViewController isKindOfClass:[AddViewController class]]) {
+        self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+        self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue];
+        NSArray *newArray = @[[self.patternArray[2] stringByAppendingString:self.patternArray[3]], [self.patternArray[4] stringByAppendingString:self.patternArray[5]]];
+        self.patternArray = newArray;
+        self.currentLetterIndex = 0;
+    } else if([self.presentingViewController isKindOfClass:[MultiplyViewController class]]) {
+        self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+        self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue];
+        NSArray *newArray = @[[self.patternArray[2] stringByAppendingString:self.patternArray[3]], [self.patternArray[4] stringByAppendingString:self.patternArray[5]]];
+        self.patternArray = newArray;
+        self.currentLetterIndex = 0;
+    } else if([self.presentingViewController isKindOfClass:[PatternViewController class]]) {
+        self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+        self.synthesizer = [[AVSpeechSynthesizer alloc] init];
+        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+        [self.synthesizer speakUtterance:utterance];
+    }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loopThroughPattern];
+}
 - (void)loopThroughPattern
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
@@ -68,11 +86,26 @@
 
 - (void)timerFired:(NSTimer *)timer
 {
-    self.currentLetterIndex = (self.currentLetterIndex +1)%self.patternArray.count;
-    self.currentLetter.text = self.patternArray[self.currentLetterIndex];
-    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
-    [self.synthesizer speakUtterance:utterance];
-    [self.currentLetter setNeedsDisplay];
+    if([self.presentingViewController isKindOfClass:[AddViewController class]]) {
+        self.currentOperation.text = self.patternArray[self.currentLetterIndex];
+        self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue] + self.currentNumber;
+        self.currentLetter.text = [[NSNumber  numberWithInt:self.currentNumber] stringValue];
+        self.currentLetterIndex = (self.currentLetterIndex + 1)%self.patternArray.count;
+    } else if([self.presentingViewController isKindOfClass:[MultiplyViewController class]]) {
+        self.currentOperation.text = self.patternArray[self.currentLetterIndex];
+        if([self.currentOperation.text characterAtIndex:0])
+        self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue] + self.currentNumber;
+        self.currentLetter.text = [[NSNumber  numberWithInt:self.currentNumber] stringValue];
+        self.currentLetterIndex = (self.currentLetterIndex + 1)%self.patternArray.count;
+        
+    } else if([self.presentingViewController isKindOfClass:[PatternViewController class]]) {
+        self.currentLetterIndex = (self.currentLetterIndex +1)%self.patternArray.count;
+        self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+        AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
+        [self.synthesizer speakUtterance:utterance];
+        [self.currentLetter setNeedsDisplay];
+    }
+    
 }
 
 

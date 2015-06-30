@@ -74,9 +74,15 @@
     
     } self.splitItSequence = [self.pattern componentsSeparatedByString:@","];
     self.gvc.patternArray = self.splitItSequence;
-    for (int i = 0; i < self.splitItSequence.count; i++) {
-    
-        NSLog(@"Individual elements in the pattern:  %@", [self.splitItSequence objectAtIndex:i]);
+//    for (int i = 0; i < self.splitItSequence.count; i++) {
+//    
+//        NSLog(@"Individual elements in the pattern:  %@", [self.splitItSequence objectAtIndex:i]);
+//    }
+    UIViewController *destVC = segue.destinationViewController;
+    if([destVC isKindOfClass:[GameViewController class]]) {
+        GameViewController *gamevc = (GameViewController *)destVC;
+        gamevc.patternArray = self.splitItSequence;
+        
     }
     
 }
