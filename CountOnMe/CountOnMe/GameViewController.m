@@ -42,21 +42,25 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.currentLetterIndex = 1;
     self.currentOperation.text = @"";
     if([self.presentingViewController isKindOfClass:[AddViewController class]]) {
+        self.currentLetterIndex = 1;
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
         self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue];
+        self.startNumber = self.currentNumber;
         NSArray *newArray = @[[self.patternArray[2] stringByAppendingString:self.patternArray[3]], [self.patternArray[4] stringByAppendingString:self.patternArray[5]]];
         self.patternArray = newArray;
         self.currentLetterIndex = 0;
     } else if([self.presentingViewController isKindOfClass:[MultiplyViewController class]]) {
+        self.currentLetterIndex = 0;
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
         self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue];
-        NSArray *newArray = @[[self.patternArray[2] stringByAppendingString:self.patternArray[3]], [self.patternArray[4] stringByAppendingString:self.patternArray[5]]];
+        self.startNumber = self.currentNumber;
+        NSArray *newArray = @[[self.patternArray[1] stringByAppendingString:self.patternArray[2]], [self.patternArray[3] stringByAppendingString:self.patternArray[4]]];
         self.patternArray = newArray;
         self.currentLetterIndex = 0;
     } else if([self.presentingViewController isKindOfClass:[PatternViewController class]]) {
+        self.currentLetterIndex = 0;
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
         self.synthesizer = [[AVSpeechSynthesizer alloc] init];
         AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
@@ -93,8 +97,14 @@
         self.currentLetterIndex = (self.currentLetterIndex + 1)%self.patternArray.count;
     } else if([self.presentingViewController isKindOfClass:[MultiplyViewController class]]) {
         self.currentOperation.text = self.patternArray[self.currentLetterIndex];
-        if([self.currentOperation.text characterAtIndex:0])
-        self.currentNumber = [self.patternArray[self.currentLetterIndex] intValue] + self.currentNumber;
+        if([self.currentOperation.text characterAtIndex:0] == 'x')
+        {
+            
+            self.currentNumber = self.currentNumber * [[NSString stringWithFormat:@"%c", [self.patternArray[self.currentLetterIndex] characterAtIndex:1]] intValue];
+        } else if([self.currentOperation.text characterAtIndex:0] == '/')
+        {
+            self.currentNumber = self.currentNumber / [[NSString stringWithFormat:@"%c", [self.patternArray[self.currentLetterIndex] characterAtIndex:1]] intValue];
+        }
         self.currentLetter.text = [[NSNumber  numberWithInt:self.currentNumber] stringValue];
         self.currentLetterIndex = (self.currentLetterIndex + 1)%self.patternArray.count;
         
@@ -103,16 +113,17 @@
         self.currentLetter.text = self.patternArray[self.currentLetterIndex];
         AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
         [self.synthesizer speakUtterance:utterance];
-        [self.currentLetter setNeedsDisplay];
     }
-    
+    [self.currentLetter setNeedsDisplay];
 }
 
 
 - (IBAction)resetButtonPressed:(id)sender
 {
     self.currentLetterIndex = 0;
-    self.currentLetter.text = self.patternArray[self.currentLetterIndex];
+    self.currentNumber = self.startNumber;
+    self.currentOperation.text = @"";
+    self.currentLetter.text = [[NSNumber numberWithInt:self.currentNumber] stringValue];
     [self.timer invalidate];
     self.timer = nil;
     AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:self.currentLetter.text];
