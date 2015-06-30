@@ -10,7 +10,7 @@
 
 @interface PatternViewController : UIViewController<UITextFieldDelegate>
 
-@property (strong,nonatomic) UITextField *patternTextField;
+@property (strong,nonatomic) IBOutlet UITextField *patternTextField;
 @property (strong, nonatomic) NSString *patternTextFieldString;
 @property (strong, nonatomic) UISlider  *metronomeSlider;
 

@@ -228,6 +228,9 @@
                             <constraint firstItem="xN5-OC-d2L" firstAttribute="top" secondItem="bhe-21-KN5" secondAttribute="bottom" constant="18" id="rXM-gq-Y22"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="patternTextField" destination="bhe-21-KN5" id="X3C-FJ-3iQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEF-uv-HAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -395,7 +398,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="GB3-Bz-Jgo"/>
         <segue reference="c0T-wc-EYp"/>
+        <segue reference="eDq-ZY-NrM"/>
     </inferredMetricsTieBreakers>
 </document>
