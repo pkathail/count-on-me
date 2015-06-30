@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.patternTextField.delegate = self;
+    self.uiAlert = [UIAlertController alertControllerWithTitle:@"Uh oh we have a problem :'(" message:@"Please enter a pattern that contains 6 characters or less" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,10 +31,19 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     int patternCount = [self.patternTextField.text length];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
     if(patternCount > 6){
-        
+        [self.uiAlert addAction:defaultAction];
+        [self presentViewController:self.uiAlert animated:YES completion:nil];
+    }
+    
+    else{
+        [self.patternTextField resignFirstResponder];
     }
     self.patternTextFieldString = self.patternTextField.text;
+    
+    
     return YES;
     
 }
