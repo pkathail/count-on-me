@@ -45,6 +45,8 @@
     self.titleForRow = [[NSString alloc] init];
     self.operators = [[NSMutableArray alloc] initWithObjects: @"+", @"-", nil];
     self.splitItSequence = [[NSMutableArray alloc] init];
+    self.slider.maximumValue = 250;
+    self.slider.minimumValue = 60;
 }
 
 
@@ -82,6 +84,7 @@
     if([destVC isKindOfClass:[GameViewController class]]) {
         GameViewController *gamevc = (GameViewController *)destVC;
         gamevc.patternArray = self.splitItSequence;
+        gamevc.bpm = self.slider.value;
         
     }
     

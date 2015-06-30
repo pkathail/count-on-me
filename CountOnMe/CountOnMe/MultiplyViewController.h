@@ -12,5 +12,7 @@
 @interface MultiplyViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource>
 @property (nonatomic) NSMutableString *pattern;
 @property (nonatomic) GameViewController *gvc;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
 
 @end

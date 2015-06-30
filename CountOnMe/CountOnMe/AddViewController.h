@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSString *pattern;
 @property (strong, nonatomic) GameViewController *gvc;
 @property (strong, nonatomic) NSArray *splitItSequence;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
+
 @end

@@ -67,6 +67,8 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pattern = [[NSMutableString alloc] initWithString:@""];
+    self.slider.maximumValue = 250;
+    self.slider.minimumValue = 60;
     // Do any additional setup after loading the view.
 }
 
@@ -97,7 +99,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"playMultiply"])
     {
-        for(int i = 0; i < 6; i ++)
+        for(int i = 0; i < 5; i ++)
         {
             if(i % 2 != 0)
             {
@@ -120,6 +122,7 @@
         if([destVC isKindOfClass:[GameViewController class]]) {
             GameViewController *gamevc = (GameViewController *)destVC;
             gamevc.patternArray = a;
+            gamevc.bpm = self.slider.value;
             
         }
     }

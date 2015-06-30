@@ -10,10 +10,13 @@
 #import "PatternViewController.h"
 #import "AddViewController.h"
 #import "MultiplyViewController.h"
+#define SECONDS 60
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface GameViewController ()
 @property (nonatomic, strong) NSTimer *timer;
 @property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
+@property (nonatomic) SystemSoundID soundID;
 @end
 
 @implementation GameViewController
@@ -28,8 +31,71 @@
 //    return self;
 //}
 
+-(void)updateNumber{
+    count += 1;
+    //if 4/4 timing is selected then the count wont go past 4
+    if (timing.selectedSegmentIndex == 2) {
+        if (count >= 5) {
+            count = 1;
+            
+        }
+        
+    }
+    
+    //if 3/4 timing is selected then the count wont go past 3
+    if (timing.selectedSegmentIndex == 1) {
+        if (count >= 4) {
+            count = 1;
+        }
+    }
+    
+    //if 2/4 timing is selected then the count wont go past 2
+    if (timing.selectedSegmentIndex == 0) {
+        if (count >= 3) {
+            count = 1;
+        }
+    }
+    //In each timing case it plays the sound on one and depending
+    //on the limitiations on the cont value the amount of each tick
+    if (count == 1) {
+        [self performSelector:@selector(playTockSound)];
+    }else {
+        [self performSelector:@selector(playTickSound)];
+    }
+    
+    numberLabel.text = [NSString stringWithFormat:@"%i",count];
+}
+
+-(void)playTickSound
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"tick"
+                                                     ofType:@"caf"];
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path]
+                                     , &_soundID);
+    AudioServicesPlaySystemSound (self.soundID);
+    
+    
+    
+    
+}
+-(void)playTockSound
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"tock"
+                                                     ofType:@"caf"];
+    
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path]
+                                     , &_soundID);
+    AudioServicesPlaySystemSound (self.soundID);
+    
+}
 
 - (void)viewDidLoad {
+    self.slider.maximumValue = 150;
+    self.slider.minimumValue = 60;
+    speed = SECONDS/self.bpm;
+    timer = [NSTimer scheduledTimerWithTimeInterval:speed target:self selector:@selector(updateNumber) userInfo:nil repeats:YES];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
