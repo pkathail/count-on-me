@@ -24,6 +24,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    int patternCount = [self.patternTextField.text length];
+    if(patternCount > 6){
+        
+    }
+    self.patternTextFieldString = self.patternTextField.text;
+    return YES;
+    
+}
+
+-(BOOL)textFieldShouldClear:(UITextField *)textField{
+    
+    return YES;
+    
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    return YES;
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return YES;
+}
 /*
 #pragma mark - Navigation
 
