@@ -7,7 +7,7 @@
 //
 
 #import "AddViewController.h"
-#import "GameModeViewController.h"
+#import "GameViewController.h"
 
 @interface AddViewController ()
 
@@ -41,10 +41,12 @@
     self.pattern = [[NSString alloc] initWithFormat:@""];
     self.addSubtractPickerView.delegate = self;
     self.addSubtractPickerView.dataSource = self;
-    self.zeroThroughNine = [[NSArray alloc] initWithObjects: @"0",@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
+    self.zeroThroughNine = [[NSMutableArray alloc] initWithObjects: @"0",@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
     self.titleForRow = [[NSString alloc] init];
-    self.operators = [[NSArray alloc] initWithObjects: @"+", @"-", nil];
+    self.operators = [[NSMutableArray alloc] initWithObjects: @"+", @"-", nil];
+    self.splitItSequence = [[NSMutableArray alloc] init];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,15 +58,19 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    for (int count = 0; count < 5; count++) {
-        [self.addSubtractPickerView selectedRowInComponent:count];
-        NSInteger index = [self.addSubtractPickerView selectedRowInComponent:count];
-        if (count % 2 == 0) {
-            [self.pattern stringByAppendingString:[self.zeroThroughNine objectAtIndex:index]];
-        } else
-            [self.pattern stringByAppendingString:[self.operators objectAtIndex:index]];
-    }
+    if([segue.identifier isEqualToString:@"PlayAdd"]) {
+        for (int count = 0; count < 5; count++) {
+            [self.addSubtractPickerView selectedRowInComponent:count];
+            NSInteger index = [self.addSubtractPickerView selectedRowInComponent:count];
+            if (count % 2 == 0) {
+                self.pattern = [NSString stringWithFormat:@",%@" ,[self.zeroThroughNine objectAtIndex:index]];
+            } else {
+                self.pattern = [NSString stringWithFormat:@",%@" ,[self.operators objectAtIndex:index]];
+            }
+        }
     
+    } self.splitItSequence = [self.pattern componentsSeparatedByString:@","];
+    self.gvc.patternArray = self.splitItSequence;
 }
 //*/
 
