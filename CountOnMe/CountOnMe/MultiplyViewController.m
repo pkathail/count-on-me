@@ -21,12 +21,12 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 6;
+    return 5;
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if(component % 2 != 0)
+    if(component % 2 == 0)
     {
         return self.numbers.count;
     }
@@ -80,7 +80,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if(component % 2 != 0)
+    if(component % 2 == 0)
     {
         return self.numbers[row];
     }
@@ -101,7 +101,7 @@
     {
         for(int i = 0; i < 5; i ++)
         {
-            if(i % 2 != 0)
+            if(i % 2 == 0)
             {
                 [self.pattern appendString:[self.numbers objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
             }
