@@ -202,7 +202,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Play!" id="LR3-mc-muL">
                                             <connections>
                                                 <action selector="playButtonPressed:" destination="5AN-Ja-4LH" id="o4W-56-fxR"/>
-                                                <segue destination="6kJ-7c-ghS" kind="show" id="GB3-Bz-Jgo"/>
+                                                <segue destination="6kJ-7c-ghS" kind="show" identifier="playPattern" id="GB3-Bz-Jgo"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -351,24 +351,30 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSm-ru-Aow">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSm-ru-Aow">
                                 <rect key="frame" x="524" y="565" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-qj-UYj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-qj-UYj">
                                 <rect key="frame" x="523" y="543" width="51" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TON-F3-zxu">
-                                <rect key="frame" x="504" y="570" width="23" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TON-F3-zxu">
+                                <rect key="frame" x="501" y="573" width="17" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ls-iR-iLt">
-                                <rect key="frame" x="578" y="570" width="23" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ls-iR-iLt">
+                                <rect key="frame" x="578" y="573" width="17" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNv-a7-oh1">
+                                <rect key="frame" x="535" y="60" width="57" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -380,16 +386,21 @@
                             <constraint firstAttribute="centerX" secondItem="wPB-rn-YH9" secondAttribute="centerX" id="7t0-Ln-paM"/>
                             <constraint firstItem="wPB-rn-YH9" firstAttribute="top" secondItem="jPn-y1-ZQF" secondAttribute="topMargin" id="CME-XJ-rHp"/>
                             <constraint firstItem="dlH-lJ-4S9" firstAttribute="top" secondItem="fSm-ru-Aow" secondAttribute="bottom" constant="4" id="H8t-7d-twA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Ls-iR-iLt" secondAttribute="trailing" constant="-11" id="KdT-Jd-Rdw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GNv-a7-oh1" secondAttribute="trailing" constant="-8" id="N2K-Y5-Hfx"/>
                             <constraint firstAttribute="centerX" secondItem="qQ9-me-qLP" secondAttribute="centerX" id="a6S-Fe-5Uf"/>
-                            <constraint firstItem="fSm-ru-Aow" firstAttribute="leading" secondItem="TON-F3-zxu" secondAttribute="trailing" constant="-3" id="egs-Wh-GV1"/>
+                            <constraint firstItem="fSm-ru-Aow" firstAttribute="leading" secondItem="TON-F3-zxu" secondAttribute="trailing" constant="6" id="egs-Wh-GV1"/>
                             <constraint firstItem="wPB-rn-YH9" firstAttribute="width" secondItem="jPn-y1-ZQF" secondAttribute="width" id="ehI-Vg-fY3"/>
                             <constraint firstItem="2Ls-iR-iLt" firstAttribute="centerY" secondItem="fSm-ru-Aow" secondAttribute="centerY" id="gfq-dN-seD"/>
                             <constraint firstItem="2Ls-iR-iLt" firstAttribute="leading" secondItem="fSm-ru-Aow" secondAttribute="trailing" constant="5" id="gkK-rL-2IN"/>
+                            <constraint firstItem="uWt-qj-UYj" firstAttribute="centerX" secondItem="fSm-ru-Aow" secondAttribute="centerX" id="mGw-AS-qmp"/>
+                            <constraint firstItem="GNv-a7-oh1" firstAttribute="top" secondItem="wPB-rn-YH9" secondAttribute="bottom" id="vAQ-BS-pLH"/>
                             <constraint firstItem="fSm-ru-Aow" firstAttribute="centerY" secondItem="TON-F3-zxu" secondAttribute="centerY" id="wbq-E5-D3l"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentLetter" destination="qQ9-me-qLP" id="Etp-MX-ceR"/>
+                        <outlet property="currentOperation" destination="GNv-a7-oh1" id="8tV-LM-Ntn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vc7-bE-7KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,7 +409,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c0T-wc-EYp"/>
-        <segue reference="eDq-ZY-NrM"/>
+        <segue reference="dyF-GW-FFp"/>
+        <segue reference="GB3-Bz-Jgo"/>
     </inferredMetricsTieBreakers>
 </document>
