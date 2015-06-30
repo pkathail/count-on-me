@@ -16,5 +16,5 @@
 @property (strong, nonatomic) NSMutableArray *operators;
 @property (strong, nonatomic) NSString *pattern;
 @property (strong, nonatomic) GameViewController *gvc;
-@property (strong, nonatomic) NSMutableArray *splitItSequence;
+@property (strong, nonatomic) NSArray *splitItSequence;
 @end

@@ -42,7 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.patternArray = @[@"a", @"b", @"c"];
+    //self.patternArray = @[@"a", @"b", @"c"];
     self.currentLetterIndex = 0;
     self.currentLetter.text = self.patternArray[self.currentLetterIndex];
     self.synthesizer = [[AVSpeechSynthesizer alloc] init];
