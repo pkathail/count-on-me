@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface GameViewController : UIViewController
 @property (nonatomic) IBOutlet UILabel *currentLetter;
