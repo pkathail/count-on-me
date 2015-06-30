@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameViewController.h"
 
 @interface MultiplyViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource>
 @property (nonatomic) NSMutableString *pattern;
+@property (nonatomic) GameViewController *gvc;
 
 @end

@@ -37,21 +37,28 @@
     
     
 }
-- (IBAction)play:(id)sender {
-    for(int i = 0; i < 6; i ++)
-    {
-        if(i % 2 != 0)
-        {
-            [self.pattern appendString:[self.numbers objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
-        }
-        else
-        {
-            [self.pattern appendString:[self.mulDiv objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
-        }
-    }
-    
-    NSLog(@"%@",self.pattern);
-}
+//- (IBAction)play:(id)sender {
+//    for(int i = 0; i < 6; i ++)
+//    {
+//        if(i % 2 != 0)
+//        {
+//            [self.pattern appendString:[self.numbers objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+//        }
+//        else
+//        {
+//            [self.pattern appendString:[self.mulDiv objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
+//        }
+//    }
+//    
+//    NSString *pat = self.pattern;
+//    NSMutableArray *a = [[NSMutableArray alloc] init];
+//    for(int i = 0; i < pat.length; i++)
+//    {
+//        NSString *s = [NSString stringWithFormat:@"%c",[self.pattern characterAtIndex:i]];
+//        [a addObject:s];
+//    }
+//    self.gvc.patternArray = a;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -99,8 +106,14 @@
             [self.pattern appendString:[self.mulDiv objectAtIndex:[self.pickerView selectedRowInComponent:i]]];
         }
     }
-    
-    NSLog(@"%@",self.pattern);
+    NSString *pat = self.pattern;
+    NSMutableArray *a = [[NSMutableArray alloc] init];
+    for(int i = 0; i < pat.length; i++)
+    {
+        NSString *s = [NSString stringWithFormat:@"%c",[self.pattern characterAtIndex:i]];
+        [a addObject:s];
+    }
+    self.gvc.patternArray = a;
 }
 
 
