@@ -67,6 +67,8 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pattern = [[NSMutableString alloc] initWithString:@""];
+    self.slider.maximumValue = 250;
+    self.slider.minimumValue = 60;
     // Do any additional setup after loading the view.
 }
 
@@ -120,6 +122,7 @@
         if([destVC isKindOfClass:[GameViewController class]]) {
             GameViewController *gamevc = (GameViewController *)destVC;
             gamevc.patternArray = a;
+            gamevc.bpm = self.slider.value;
             
         }
     }

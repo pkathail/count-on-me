@@ -16,6 +16,8 @@
 @implementation PatternViewController
 
 - (void)viewDidLoad {
+    self.slider.maximumValue = 250;
+    self.slider.minimumValue = 60;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.patternTextField.delegate = self;
@@ -81,6 +83,7 @@
     if([destVC isKindOfClass:[GameViewController class]]) {
         GameViewController *gamevc = (GameViewController *)destVC;
         gamevc.patternArray = a;
+        gamevc.bpm = self.slider.value;
         NSLog(@"String: %@", self.patternTextFieldString);
     }
     

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *patternTextFieldString;
 @property (strong, nonatomic) UISlider  *metronomeSlider;
 @property (strong, nonatomic) UIAlertController *uiAlert;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
 
 
