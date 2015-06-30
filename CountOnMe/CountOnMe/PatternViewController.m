@@ -70,11 +70,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
+    
 
 }
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([identifier isEqualToString:@"playPattern"]&& [self.patternTextField.text length] > 6) {
+    if ([identifier isEqualToString:@"playPattern"] && [self.patternTextField.text length] > 6) {
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
         
         [self.uiAlert addAction:defaultAction];
